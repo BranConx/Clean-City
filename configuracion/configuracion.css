@@ -1,0 +1,36 @@
+/* ================================
+   CONFIGURACIÓN CSS
+   ================================ */
+
+/* Opciones de configuración */
+.config-opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.config-opciones label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Nota informativa debajo de cada sección */
+.config-nota {
+  color: #888;
+  font-size: 13px;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Modo oscuro para configuración */
+.dark-mode .config-opciones label {
+  color: #ccc;
+}
+
+.dark-mode .config-nota {
+  color: #888;
+}

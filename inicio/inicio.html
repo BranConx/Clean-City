@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanCity - Inicio</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>
+    if (!localStorage.getItem("usuarioCleanCity")) {
+      window.location.href = "../login/login.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div>
+        <div class="logo">🧹 CleanCity</div>
+        <nav class="menu" id="menuPrincipal">
+          <a href="../inicio/inicio.html" class="active">🏠 Inicio</a>
+          <a href="../mapa/mapa.html">🗺️ Mapa</a>
+          <a href="../horarios/horarios.html">🚛 Horarios</a>
+          <a href="../reportes/reportes.html">📢 Reportes</a>
+          <a href="../reciclaje/reciclaje.html">♻️ Reciclaje</a>
+          <a href="../recordatorios/recordatorios.html">🔔 Recordatorios</a>
+          <a href="../configuracion/configuracion.html">⚙️ Configuración</a>
+        </nav>
+      </div>
+      <div class="profile-box" id="profileBox"></div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="welcome">
+          <h1>🏠 Inicio</h1>
+          <p>Bienvenido a CleanCity, juntos cuidamos nuestra ciudad.</p>
+        </div>
+        <div class="top-actions">
+          <div class="fecha-box" id="fechaHora"></div>
+        </div>
+      </div>
+
+      <section class="hero">
+        <div class="hero-info">
+          <span class="tag">🌱 Ciudad limpia, futuro sostenible</span>
+          <h2>Tu ciudad más limpia empieza contigo</h2>
+          <p>Consulta horarios de recolección, encuentra información de reciclaje y reporta situaciones en tu comunidad.</p>
+          <div class="hero-buttons">
+            <a href="../reportes/reportes.html" class="primary-btn">📢 Crear reporte</a>
+            <a href="../reciclaje/reciclaje.html" class="secondary-btn">♻️ Ver reciclaje</a>
+          </div>
+        </div>
+        <div class="hero-image" aria-hidden="true">🌍</div>
+      </section>
+
+      <section class="stats" aria-label="Resumen de CleanCity">
+        <article class="stat-card">
+          <h3 id="statReportes">0</h3>
+          <p>Reportes enviados</p>
+        </article>
+        <article class="stat-card">
+          <h3 id="statRecoleccion">—</h3>
+          <p>Próxima recolección</p>
+        </article>
+        <article class="stat-card">
+          <h3 id="statUsuarios">0</h3>
+          <p>Usuarios registrados</p>
+        </article>
+      </section>
+
+      <section class="cards" aria-label="Apartados de CleanCity">
+        <article class="card">
+          <h3>🚛 Horarios</h3>
+          <p>Consulta las zonas y los horarios de recolección.</p>
+          <a href="../horarios/horarios.html" class="card-btn">Ver horarios</a>
+        </article>
+        <article class="card">
+          <h3>📢 Reportes</h3>
+          <p>Informa sobre residuos o problemas en tu comunidad.</p>
+          <a href="../reportes/reportes.html" class="card-btn">Crear reporte</a>
+        </article>
+        <article class="card">
+          <h3>♻️ Reciclaje</h3>
+          <p>Explora información y puntos de reciclaje.</p>
+          <a href="../reciclaje/reciclaje.html" class="card-btn">Explorar</a>
+        </article>
+        <article class="card">
+          <h3>🔔 Recordatorios</h3>
+          <p>Organiza avisos para tus próximos días de recolección.</p>
+          <a href="../recordatorios/recordatorios.html" class="card-btn">Configurar</a>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../inicio/inicio.js"></script>
+  <script>actualizarMenu();</script>
+</body>
+</html>

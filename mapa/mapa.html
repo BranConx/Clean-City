@@ -1,0 +1,77 @@
+<!--
+ Proyecto: CLEAN CITY
+ Descripción: Estructura HTML de la interfaz del sistema.
+ Comentarios agregados automáticamente para mejorar documentación y mantenimiento.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Configuración del documento: codificación UTF-8 -->
+  <meta charset="UTF-8">
+  <!-- Configuración responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título de la página -->
+  <title>CleanCity - Mapa</title>
+  <!-- Enlace al CSS principal -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- Script de validación: si no hay usuario logueado, redirige a login -->
+  <script>
+    if (!localStorage.getItem("usuarioCleanCity")) {
+      window.location.href = "../login/login.html";
+    }
+  </script>
+</head>
+<body>
+  <!-- Contenedor principal -->
+  <div class="container">
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">🧹 CleanCity</div>
+        <nav class="menu" id="menuPrincipal">
+          <a href="../inicio/inicio.html">🏠 Inicio</a>
+          <!-- Enlace a Mapa (página actual, resaltada) -->
+          <a href="../mapa/mapa.html" class="active">🗺️ Mapa</a>
+          <a href="../horarios/horarios.html">🚛 Horarios</a>
+          <a href="../reportes/reportes.html">📢 Reportes</a>
+          <a href="../reciclaje/reciclaje.html">♻️ Reciclaje</a>
+          <a href="../recordatorios/recordatorios.html">🔔 Recordatorios</a>
+          <a href="../configuracion/configuracion.html">⚙️ Configuración</a>
+        </nav>
+      </div>
+      <!-- Perfil del usuario -->
+      <div class="profile-box" id="profileBox"></div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main">
+      <!-- Topbar -->
+      <div class="topbar">
+        <div class="welcome">
+          <h1>🗺️ Mapa de rutas</h1>
+          <p>Próximamente disponible</p>
+        </div>
+        <div class="top-actions">
+          <div class="fecha-box" id="fechaHora"></div>
+        </div>
+      </div>
+
+      <!-- Mensaje de "En construcción" -->
+      <div class="info-section" style="text-align: center; padding: 80px 20px;">
+        <h2 style="color: #FF7A00; font-size: 48px;">🚧</h2>
+        <h2>En construcción</h2>
+        <p>Esta sección estará disponible próximamente.</p>
+        <p>Mientras tanto, puedes ver el mapa de reciclaje en la sección <strong>♻️ Reciclaje</strong></p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Carga del script común -->
+  <script src="../assets/js/script.js"></script>
+  <!-- Actualiza el menú y perfil -->
+  <script>
+    actualizarMenu();
+  </script>
+</body>
+</html>

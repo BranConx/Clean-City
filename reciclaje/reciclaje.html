@@ -1,0 +1,178 @@
+<!--
+ Proyecto: CLEAN CITY
+ Descripción: Mapa de reciclaje con animación de carga
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanCity - Reciclaje Popayán</title>
+
+  <!-- ⚡ Aceleradores de conexión -->
+  <link rel="preconnect" href="https://tile.openstreetmap.de">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="dns-prefetch" href="https://tile.openstreetmap.de">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../reciclaje/reciclaje.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    if (!localStorage.getItem("usuarioCleanCity")) {
+      window.location.href = "../login/login.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div>
+        <div class="logo">🧹 CleanCity</div>
+        <nav class="menu" id="menuPrincipal">
+          <a href="../inicio/inicio.html">🏠 Inicio</a>
+          <a href="../mapa/mapa.html">🗺️ Mapa</a>
+          <a href="../horarios/horarios.html">🚛 Horarios</a>
+          <a href="../reportes/reportes.html">📢 Reportes</a>
+          <a href="../reciclaje/reciclaje.html" class="active">♻️ Reciclaje</a>
+          <a href="../recordatorios/recordatorios.html">🔔 Recordatorios</a>
+          <a href="../configuracion/configuracion.html">⚙️ Configuración</a>
+        </nav>
+      </div>
+      <div class="profile-box" id="profileBox"></div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="welcome">
+          <h1>🗺️ Mapa de reciclaje - Popayán</h1>
+          <p>Puntos de reciclaje (verde) y puntos donde venden lo reciclado (rojo).</p>
+        </div>
+        <div class="top-actions">
+          <div class="fecha-box" id="fechaHora"></div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN DEL MAPA -->
+      <div class="map-section">
+        <div class="section-title">
+          <h2>📍 Ubicaciones</h2>
+          <button class="mini-btn" id="actualizarMapa">Actualizar</button>
+        </div>
+
+        <div class="mapa-contenedor">
+          <div id="map"></div>
+
+          <!-- Overlay de carga con el camión -->
+          <div class="mapa-loading-overlay" id="mapaLoading">
+            <div class="loader-camion visible">
+              <div class="loader-camion-escena">
+                <span class="loader-camion-emoji">🚚</span>
+                <div class="loader-humo">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="loader-camion-suelo"></div>
+              </div>
+              <p class="loader-camion-texto">Cargando mapa...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEYENDA -->
+      <div class="leyenda">
+        <div class="leyenda-item">
+          <div class="circulo verde"></div>
+          <span>🟢 Puntos de reciclaje (centros de acopio)</span>
+        </div>
+        <div class="leyenda-item">
+          <div class="circulo rojo"></div>
+          <span>🔴 Puntos donde venden lo reciclado</span>
+        </div>
+      </div>
+
+      <!-- TABLA DE PRECIOS -->
+      <div class="tabla-precios">
+        <h3 class="tabla-titulo">💰 Precios de chatarra y productos reciclados</h3>
+
+        <div class="categoria-precios">
+          <h4>🏗️ Metales (Chatarra)</h4>
+          <table class="tabla">
+            <thead>
+              <tr><th>Material</th><th>Precio por kg (COP)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Cobre (limpio y brillante)</td><td>$20,000 - $35,000</td></tr>
+              <tr><td>Aluminio (perfiles o grueso)</td><td>$4,000 - $6,000</td></tr>
+              <tr><td>Aluminio (latas de bebida)</td><td>$1,300 - $2,000</td></tr>
+              <tr><td>Hierro / Chatarra mixta</td><td>$350 - $500</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="categoria-precios">
+          <h4>📦 Papel, Cartón y Plástico</h4>
+          <table class="tabla">
+            <thead>
+              <tr><th>Material</th><th>Precio por kg (COP)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Cartón corrugado</td><td>$70 - $150</td></tr>
+              <tr><td>Botellas PET (plástico transparente)</td><td>$200 - $600</td></tr>
+              <tr><td>Plástico soplado (tapas, envases de aseo)</td><td>$150 - $200</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="categoria-precios">
+          <h4>🔌 Electrodomésticos y Artículos Dañados</h4>
+          <table class="tabla">
+            <thead>
+              <tr><th>Material</th><th>Precio (COP)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Lavadoras</td><td>$30,000 - $40,000</td></tr>
+              <tr><td>Neveras</td><td>$30,000 - $35,000</td></tr>
+              <tr><td>Televisores</td><td>$15,000 - $25,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- LISTAS DE PUNTOS -->
+      <div class="listas-reciclaje">
+        <div class="lista">
+          <h3>♻️ Puntos de Reciclaje</h3>
+          <ul>
+            <li><strong>1.</strong> ARMAC - Cra. 5 #9N-203, Barrio Santa Teresa</li>
+            <li><strong>2.</strong> Recicladora del Sur - Popayán</li>
+            <li><strong>3.</strong> Chatarrería San Diego - Cra. 33 #7-30</li>
+            <li><strong>4.</strong> Chatarrería Disney - Cra. 19 #68N-25</li>
+            <li><strong>5.</strong> AREMARPO - Cra. 4A #15A-52</li>
+          </ul>
+        </div>
+        <div class="lista">
+          <h3>💰 Puntos Donde Venden Lo Reciclado</h3>
+          <ul>
+            <li><strong>1.</strong> BRASOC S.A.S. - Variante Norte</li>
+            <li><strong>2.</strong> Reciclaje Global de Plástico - Cra. 17 #61N-16</li>
+            <li><strong>3.</strong> Etramar S.A.S. - Cra. 12 #60N-50</li>
+            <li><strong>4.</strong> Chatarrería la Mayorista - Cra. 51 con Calle 7</li>
+            <li><strong>5.</strong> Chatarrería San Diego - Cra. 33 #7-30</li>
+            <li><strong>6.</strong> Chatarrería Disney - Cra. 19 #68N-25</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../reciclaje/reciclaje.js"></script>
+  <script>
+    actualizarMenu();
+  </script>
+</body>
+</html>

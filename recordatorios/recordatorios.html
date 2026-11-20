@@ -1,0 +1,110 @@
+<!--
+ Proyecto: CLEAN CITY
+ Descripción: Estructura HTML de la interfaz del sistema.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanCity - Recordatorios</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../recordatorios/recordatorios.css">
+  <script>
+    if (!localStorage.getItem("usuarioCleanCity")) {
+      window.location.href = "../login/login.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">🧹 CleanCity</div>
+        <nav class="menu" id="menuPrincipal">
+          <a href="../inicio/inicio.html">🏠 Inicio</a>
+          <a href="../mapa/mapa.html">🗺️ Mapa</a>
+          <a href="../horarios/horarios.html">🚛 Horarios</a>
+          <a href="../reportes/reportes.html">📢 Reportes</a>
+          <a href="../reciclaje/reciclaje.html">♻️ Reciclaje</a>
+          <a href="../recordatorios/recordatorios.html" class="active">🔔 Recordatorios</a>
+          <a href="../configuracion/configuracion.html">⚙️ Configuración</a>
+        </nav>
+      </div>
+      <div class="profile-box" id="profileBox"></div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main">
+      <div class="topbar">
+        <div class="welcome">
+          <h1>🔔 Recordatorios</h1>
+          <p>Programa alertas para no olvidar sacar la basura o reciclar</p>
+        </div>
+        <div class="top-actions">
+          <div class="fecha-box" id="fechaHora"></div>
+        </div>
+      </div>
+
+      <!-- AVISO: solo aparece si las notificaciones NO están activadas -->
+      <div class="recordatorios-card aviso-notif" id="avisoNotif" style="display:none;">
+        <h3>💡 Activa las notificaciones</h3>
+        <p class="info-nota">
+          Para recibir alertas del sistema operativo (aunque estés en otra pestaña),
+          actívalas desde <a href="../configuracion/configuracion.html" class="link-config">⚙️ Configuración</a>.
+        </p>
+      </div>
+
+      <!-- TARJETA: CREAR NUEVO RECORDATORIO -->
+      <div class="recordatorios-card">
+        <h3>📝 Crear nuevo recordatorio</h3>
+        <div class="form-group">
+          <label>📌 Título:</label>
+          <input type="text" id="titulo" placeholder="Ej: Sacar la basura">
+        </div>
+        <div class="form-group">
+          <label>📅 Día:</label>
+          <select id="dia">
+            <option value="0">Domingo</option>
+            <option value="1">Lunes</option>
+            <option value="2">Martes</option>
+            <option value="3">Miércoles</option>
+            <option value="4">Jueves</option>
+            <option value="5">Viernes</option>
+            <option value="6">Sábado</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>⏰ Hora:</label>
+          <input type="time" id="hora" value="19:00">
+        </div>
+        <div class="form-group">
+          <label>🔄 Repetir:</label>
+          <select id="repetir">
+            <option value="semanal">Semanalmente</option>
+            <option value="una_vez">Una sola vez</option>
+          </select>
+        </div>
+        <button id="btnGuardar" class="guardar-recordatorio">➕ Guardar recordatorio</button>
+      </div>
+
+      <!-- TARJETA: LISTA DE MIS RECORDATORIOS -->
+      <div class="recordatorios-card">
+        <h3>📋 Mis recordatorios</h3>
+        <div id="listaRecordatorios">
+          <p class="vacio">No hay recordatorios. Crea uno nuevo.</p>
+        </div>
+        <p class="info-nota">💡 Los recordatorios se guardan en tu navegador.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../recordatorios/recordatorios.js"></script>
+  <script>
+    actualizarMenu();
+  </script>
+</body>
+</html>

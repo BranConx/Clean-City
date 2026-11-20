@@ -1,0 +1,125 @@
+<!--
+ Proyecto: CLEAN CITY
+ Descripción: Reportes ciudadanos
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanCity - Reportes</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../reportes/reportes.css">
+  <script>
+    if (!localStorage.getItem("usuarioCleanCity")) {
+      window.location.href = "../login/login.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div>
+        <div class="logo">🧹 CleanCity</div>
+        <nav class="menu" id="menuPrincipal">
+          <a href="../inicio/inicio.html">🏠 Inicio</a>
+          <a href="../mapa/mapa.html">🗺️ Mapa</a>
+          <a href="../horarios/horarios.html">🚛 Horarios</a>
+          <a href="../reportes/reportes.html" class="active">📢 Reportes</a>
+          <a href="../reciclaje/reciclaje.html">♻️ Reciclaje</a>
+          <a href="../recordatorios/recordatorios.html">🔔 Recordatorios</a>
+          <a href="../configuracion/configuracion.html">⚙️ Configuración</a>
+        </nav>
+      </div>
+      <div class="profile-box" id="profileBox"></div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="welcome">
+          <h1>📢 Reportes ciudadanos</h1>
+          <p>Reporta zonas con basura acumulada o puntos críticos.</p>
+        </div>
+        <div class="top-actions">
+          <div class="fecha-box" id="fechaHora"></div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h2>➕ Crear nuevo reporte</h2>
+        <div class="reporte-form">
+          <input type="text" id="reporteLugar" placeholder="📍 Ubicación">
+          <textarea id="reporteDescripcion" placeholder="📝 Describe el problema"></textarea>
+          <button id="enviarReporte">📢 Enviar reporte</button>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h2>📋 Mis reportes</h2>
+        <div id="listaReportes">
+          <p class="vacio-reportes">📭 No hay reportes enviados.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===================== MODAL DE EDICIÓN ===================== -->
+  <div class="modal-overlay" id="modalEditar">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-icon">✏️</div>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-titulo">Editar reporte</h2>
+        <p class="modal-subtitulo">Modifica los datos del reporte seleccionado</p>
+
+        <div class="modal-campo">
+          <label class="modal-label">📍 Ubicación</label>
+          <input type="text" id="editarLugar" class="modal-input" placeholder="Ubicación">
+        </div>
+
+        <div class="modal-campo">
+          <label class="modal-label">📝 Descripción</label>
+          <textarea id="editarDescripcion" class="modal-input modal-textarea" placeholder="Describe el problema"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-cancelar" id="btnCancelarEditar">Cancelar</button>
+        <button class="modal-btn modal-btn-guardar" id="btnGuardarEditar">💾 Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== MODAL DE ELIMINAR ===================== -->
+  <div class="modal-overlay" id="modalEliminar">
+    <div class="modal-card">
+      <div class="modal-header modal-header-danger">
+        <div class="modal-icon">🗑️</div>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-titulo">Eliminar reporte</h2>
+        <p class="modal-subtitulo">Esta acción no se puede deshacer</p>
+
+        <div class="modal-preview">
+          <div class="modal-preview-lugar">📍 <span id="eliminarLugar"></span></div>
+          <div class="modal-preview-desc" id="eliminarDescripcion"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-cancelar" id="btnCancelarEliminar">Cancelar</button>
+        <button class="modal-btn modal-btn-eliminar" id="btnConfirmarEliminar">🗑️ Sí, eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONTENEDOR DE TOASTS ===================== -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../reportes/reportes.js"></script>
+  <script>
+    actualizarMenu();
+  </script>
+</body>
+</html>

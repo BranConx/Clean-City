@@ -1,0 +1,155 @@
+<!--
+ Proyecto: CLEAN CITY
+ Descripción: Panel de administrador con secciones apiladas
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanCity - Panel de Administrador</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../administracion/admin.css">
+  <script>
+    if (!localStorage.getItem("usuarioCleanCity")) {
+      window.location.href = "../login/login.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!-- SIDEBAR NORMAL -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">🧹 CleanCity</div>
+        <nav class="menu" id="menuPrincipal">
+          <a href="../inicio/inicio.html">🏠 Inicio</a>
+          <a href="../mapa/mapa.html">🗺️ Mapa</a>
+          <a href="../horarios/horarios.html">🚛 Horarios</a>
+          <a href="../reportes/reportes.html">📢 Reportes</a>
+          <a href="../reciclaje/reciclaje.html">♻️ Reciclaje</a>
+          <a href="../recordatorios/recordatorios.html">🔔 Recordatorios</a>
+          <a href="../configuracion/configuracion.html">⚙️ Configuración</a>
+        </nav>
+      </div>
+      <div class="profile-box" id="profileBox"></div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main">
+      <div class="topbar">
+        <div class="welcome">
+          <h1>🛠️ Panel de Administrador</h1>
+          <p>Gestiona zonas, horarios y revisa reportes y usuarios</p>
+        </div>
+        <div class="top-actions">
+          <div class="fecha-box" id="fechaHora"></div>
+        </div>
+      </div>
+
+      <!-- ============ 1. RESUMEN ============ -->
+      <div class="info-section">
+        <h2>📊 Resumen del sistema</h2>
+        <div class="admin-resumen">
+          <div class="admin-stat">
+            <h3 id="statZonas">0</h3>
+            <p>Zonas registradas</p>
+          </div>
+          <div class="admin-stat">
+            <h3 id="statHorarios">0</h3>
+            <p>Horarios programados</p>
+          </div>
+          <div class="admin-stat">
+            <h3 id="statReportes">0</h3>
+            <p>Reportes en el sistema</p>
+          </div>
+          <div class="admin-stat">
+            <h3 id="statUsuarios">0</h3>
+            <p>Usuarios registrados</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ 2. ZONAS ============ -->
+      <div class="info-section">
+        <h2>🗺️ Zonas de recolección</h2>
+        <p class="admin-nota">Agrega o elimina zonas donde se recogen residuos.</p>
+
+        <div class="admin-form">
+          <input type="text" id="zonaNombre" placeholder="Nombre de la zona (ej: Centro urbano)">
+          <input type="text" id="zonaDescripcion" placeholder="Descripción (opcional)">
+          <button id="btnAgregarZona" class="btn-primario">➕ Agregar zona</button>
+        </div>
+
+        <div id="listaZonas" class="admin-lista"></div>
+      </div>
+
+      <!-- ============ 3. HORARIOS ============ -->
+      <div class="info-section">
+        <h2>📅 Horarios de recolección</h2>
+        <p class="admin-nota">Cada horario debe estar vinculado a una zona.</p>
+
+        <div class="admin-form">
+          <select id="horarioZona">
+            <option value="">— Selecciona una zona —</option>
+          </select>
+
+          <select id="horarioDia">
+            <option value="Lunes a viernes">Lunes a viernes</option>
+            <option value="Lunes">Lunes</option>
+            <option value="Martes">Martes</option>
+            <option value="Miércoles">Miércoles</option>
+            <option value="Jueves">Jueves</option>
+            <option value="Viernes">Viernes</option>
+            <option value="Sábados">Sábados</option>
+            <option value="Sábado">Sábado</option>
+            <option value="Domingos">Domingos</option>
+            <option value="Domingo">Domingo</option>
+          </select>
+
+          <input type="text" id="horarioHora" placeholder="Hora (ej: 6:00 a.m. - 10:00 a.m.)">
+
+          <select id="horarioTipo">
+            <option value="Residuos">🗑️ Residuos</option>
+            <option value="Reciclaje">♻️ Reciclaje</option>
+            <option value="Especial">⭐ Especial</option>
+          </select>
+
+          <button id="btnAgregarHorario" class="btn-primario">➕ Agregar horario</button>
+        </div>
+
+        <div id="listaHorarios" class="admin-lista"></div>
+      </div>
+
+      <!-- ============ 4. CALENDARIO ============ -->
+      <div class="info-section">
+        <h2>🗓️ Vista previa del calendario</h2>
+        <p class="admin-nota">Así verán los usuarios el calendario de recolección.</p>
+        <div id="calendarioRecoleccion"></div>
+      </div>
+
+      <!-- ============ 5. REPORTES ============ -->
+      <div class="info-section">
+        <h2>📢 Reportes ciudadanos</h2>
+        <p class="admin-nota">Reportes enviados por los usuarios (en este navegador).</p>
+        <div id="listaReportesAdmin" class="admin-lista"></div>
+      </div>
+
+      <!-- ============ 6. USUARIOS ============ -->
+      <div class="info-section">
+        <h2>👥 Usuarios registrados</h2>
+        <p class="admin-nota">Usuarios que se han registrado en este navegador.</p>
+        <div id="listaUsuariosAdmin" class="admin-lista"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/calendario.js"></script>
+  <script src="../administracion/admin.js"></script>
+  <script>
+    actualizarMenu();
+  </script>
+</body>
+</html>

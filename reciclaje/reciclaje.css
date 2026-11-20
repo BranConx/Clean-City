@@ -1,0 +1,394 @@
+/* ================================
+   RECICLAJE - ESTILOS DEL MAPA Y TABLAS
+   ================================ */
+
+/* Contenedor del mapa (tarjeta blanca) */
+.map-section {
+    background: white;
+    border-radius: 24px;
+    padding: 25px;
+    border: 1px solid #ECECEC;
+    margin-bottom: 20px;
+}
+
+/* Título y botón de actualizar del mapa */
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Botón de actualizar mapa */
+.mini-btn {
+    background: #FFF1E5;
+    color: #FF7A00;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Contenedor del mapa */
+#map {
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+    z-index: 1;
+    background: #e0e0e0;
+}
+
+/* ========== CONTENEDOR DEL MAPA CON LOADER ========== */
+
+.mapa-contenedor {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 450px;
+}
+
+.mapa-contenedor #map {
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+}
+
+/* Leyenda del mapa (contenedor flexible) */
+.leyenda {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 15px 20px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/* Cada ítem de la leyenda */
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Círculo de color (verde o rojo) */
+.circulo {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+.circulo.verde {
+    background-color: #4caf50;
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px #4caf50;
+}
+.circulo.rojo {
+    background-color: #f44336;
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px #f44336;
+}
+
+/* Tabla de precios */
+.tabla-precios {
+    background: white;
+    border-radius: 24px;
+    padding: 25px;
+    border: 1px solid #ECECEC;
+    margin-bottom: 20px;
+}
+
+/* Título de la tabla */
+.tabla-titulo {
+    font-size: 22px;
+    color: #2e7d32;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #FF7A00;
+    text-align: center;
+}
+
+/* Cada categoría (Metales, Papel, Electrodomésticos) */
+.categoria-precios {
+    margin-bottom: 30px;
+}
+.categoria-precios h4 {
+    font-size: 18px;
+    color: #FF7A00;
+    margin-bottom: 15px;
+    padding-left: 5px;
+    border-left: 4px solid #FF7A00;
+}
+
+/* Estilo de la tabla */
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f9f9f9;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.tabla th {
+    background: #FF7A00;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+.tabla td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ECECEC;
+    color: #333;
+}
+.tabla tr:last-child td {
+    border-bottom: none;
+}
+
+/* Listas de puntos de reciclaje y venta */
+.listas-reciclaje {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background: white;
+    border-radius: 24px;
+    padding: 25px;
+    border: 1px solid #ECECEC;
+}
+
+/* Cada lista (puntos de reciclaje o venta) */
+.lista {
+    flex: 1;
+    min-width: 280px;
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 20px;
+}
+.lista h3 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #2e7d32;
+}
+.lista ul {
+    list-style: none;
+}
+.lista li {
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+.lista li:last-child {
+    border-bottom: none;
+}
+
+/* ========== LOADER DE CAMIÓN ========== */
+
+.loader-camion {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 14px;
+}
+
+.loader-camion.visible {
+    display: flex;
+}
+
+.loader-camion-escena {
+    position: relative;
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 70px;
+}
+
+.loader-camion-emoji {
+    font-size: 56px;
+    display: inline-block;
+    animation: camionRebote 0.35s ease-in-out infinite alternate;
+    filter: drop-shadow(0 6px 10px rgba(255, 122, 0, 0.35));
+    line-height: 1;
+}
+
+@keyframes camionRebote {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-5px) rotate(-3deg);
+    }
+}
+
+.loader-camion-suelo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #FF7A00, transparent);
+    opacity: 0.3;
+    border-radius: 50%;
+    animation: sueloPulso 1s ease-in-out infinite;
+}
+
+@keyframes sueloPulso {
+    0%, 100% { opacity: 0.2; transform: scaleX(0.9); }
+    50%      { opacity: 0.5; transform: scaleX(1.1); }
+}
+
+.loader-humo {
+    position: absolute;
+    right: -10px;
+    bottom: 14px;
+    pointer-events: none;
+}
+
+.loader-humo span {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(200, 200, 200, 0.65);
+    animation: humoSube 1.4s ease-out infinite;
+}
+
+.loader-humo span:nth-child(1) { animation-delay: 0s; }
+.loader-humo span:nth-child(2) { animation-delay: 0.35s; width: 14px; height: 14px; }
+.loader-humo span:nth-child(3) { animation-delay: 0.7s;  width: 10px; height: 10px; }
+
+@keyframes humoSube {
+    0% {
+        transform: translate(0, 0) scale(0.4);
+        opacity: 0.9;
+    }
+    40% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(22px, -38px) scale(1.7);
+        opacity: 0;
+    }
+}
+
+.loader-camion-texto {
+    font-size: 14px;
+    font-weight: 600;
+    color: #FF7A00;
+    letter-spacing: 0.5px;
+    animation: textoPulso 1.5s ease-in-out infinite;
+}
+
+@keyframes textoPulso {
+    0%, 100% { opacity: 0.6; }
+    50%      { opacity: 1; }
+}
+
+/* Overlay del mapa mientras carga */
+.mapa-loading-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(2px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+    border-radius: 20px;
+}
+
+.mapa-loading-overlay.visible {
+    display: flex;
+}
+
+/* ========== MODO OSCURO ========== */
+.dark-mode .map-section {
+    background: #1e1e1e;
+    border-color: #333;
+}
+.dark-mode .leyenda {
+    background: #2a2a2a;
+}
+.dark-mode .leyenda-item span {
+    color: #ccc;
+}
+.dark-mode .tabla-precios {
+    background: #1e1e1e;
+    border-color: #333;
+}
+.dark-mode .tabla-titulo {
+    color: #90caf9;
+}
+.dark-mode .tabla {
+    background: #2a2a2a;
+}
+.dark-mode .tabla th {
+    background: #FF7A00;
+    color: #1a1a1a;
+}
+.dark-mode .tabla td {
+    color: #d0d0d0;
+    border-bottom-color: #444;
+}
+.dark-mode .lista {
+    background: #2a2a2a;
+}
+.dark-mode .lista li {
+    color: #ccc;
+    border-bottom-color: #444;
+}
+.dark-mode .lista h3 {
+    color: #90caf9;
+    border-bottom-color: #FF7A00;
+}
+.dark-mode .mini-btn {
+    background: #2a2a2a;
+    color: #FF7A00;
+    border: 1px solid #FF7A00;
+}
+.dark-mode .mini-btn:hover {
+    background: #FF7A00;
+    color: white;
+}
+
+.dark-mode .loader-humo span {
+    background: rgba(180, 180, 180, 0.5);
+}
+
+.dark-mode .loader-camion-texto {
+    color: #FFA94D;
+}
+
+.dark-mode .mapa-loading-overlay {
+    background: rgba(30, 30, 30, 0.9);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 700px) {
+    #map {
+        height: 350px;
+    }
+
+    .mapa-contenedor,
+    .mapa-contenedor #map {
+        min-height: 350px;
+        height: 350px;
+    }
+
+    .leyenda {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .listas-reciclaje {
+        flex-direction: column;
+    }
+    .tabla th,
+    .tabla td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+}

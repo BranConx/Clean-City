@@ -1,0 +1,77 @@
+<!--
+ Proyecto: CLEAN CITY
+ Descripción: Estructura HTML de la interfaz del sistema.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanCity - Iniciar Sesión</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=2">
+  <link rel="stylesheet" href="../login/login.css">
+  <script>
+    if (localStorage.getItem("usuarioCleanCity")) {
+      window.location.href = "../inicio/inicio.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- COLUMNA IZQUIERDA: Branding -->
+    <div class="col-left">
+      <div class="brand">
+        <div class="logo-icon">♻️</div>
+        <h1 class="brand-title">CleanCity</h1>
+        <p class="brand-subtitle">Tu ciudad, más limpia.</p>
+        <div class="brand-message">
+          <p>Gestiona tu plataforma de limpieza urbana de forma rápida, moderna y eficiente.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA: Formulario -->
+    <div class="col-right">
+      <div class="form-wrapper">
+        <h2 class="form-title">Iniciar sesión</h2>
+        <p class="form-subtitle">Ingresa tus credenciales para continuar</p>
+
+        <!-- Campo: Correo electrónico -->
+        <div class="campo">
+          <label class="campo-label">Correo electrónico</label>
+          <input type="email" id="loginEmail" class="campo-input" placeholder="ejemplo@correo.com">
+          <span class="campo-error" id="errorEmail"></span>
+        </div>
+
+        <!-- Campo: Contraseña -->
+        <div class="campo">
+          <label class="campo-label">Contraseña</label>
+          <input type="password" id="loginPassword" class="campo-input" placeholder="••••••••">
+          <span class="campo-error" id="errorPassword"></span>
+        </div>
+
+        <!-- Error general (correo o contraseña incorrectos) -->
+        <div class="error-general" id="errorGeneral"></div>
+
+        <!-- Fila de acciones -->
+        <div class="row-acciones">
+          <label class="checkbox-label">
+            <input type="checkbox" checked> Recordarme
+          </label>
+          <a href="#" class="olvido-link" onclick="alert('Función disponible próximamente')">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button id="btnLogin" class="btn-entrar">Entrar</button>
+
+        <p class="registro-link">¿No tienes cuenta? <a href="../registro/registro.html">Crear cuenta</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../assets/js/script.js?v=2"></script>
+  <script src="../login/login.js"></script>
+</body>
+</html>

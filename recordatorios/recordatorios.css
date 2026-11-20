@@ -1,0 +1,296 @@
+/* ================================
+   RECORDATORIOS - ESTILOS
+   ================================ */
+
+/* Tarjeta contenedora de cada sección */
+.recordatorios-card {
+  background: white;
+  border-radius: 24px;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 1px solid #ECECEC;
+  transition: 0.3s;
+}
+
+.recordatorios-card h3 {
+  color: #FF7A00;
+  margin-bottom: 20px;
+  font-size: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #FF7A00;
+}
+
+/* Grupo de formulario */
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.form-group label {
+  width: 100px;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input,
+.form-group select {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #f9f9f9;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #FF7A00;
+  background: white;
+}
+
+/* Botón guardar recordatorio */
+.guardar-recordatorio {
+  width: 100%;
+  background: #FF7A00;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.guardar-recordatorio:hover {
+  background: #e66900;
+  transform: translateY(-2px);
+}
+
+/* Mensaje cuando no hay recordatorios */
+.vacio {
+  text-align: center;
+  color: #999;
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 12px;
+}
+
+/* Cada ítem de la lista */
+.recordatorio-item {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  transition: 0.3s;
+  border-left: 4px solid #FF7A00;
+}
+
+.recordatorio-item:hover {
+  background: #FFF1E5;
+  transform: translateX(5px);
+}
+
+.recordatorio-info {
+  flex: 1;
+}
+
+.recordatorio-titulo {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.recordatorio-detalle {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Botón eliminar */
+.btn-eliminar {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-eliminar:hover {
+  background: #b02a37;
+  transform: scale(1.05);
+}
+
+/* ========== BOTÓN DE PERMISO DE NOTIFICACIONES ========== */
+
+.permiso-btn {
+  width: 100%;
+  background: #FFF1E5;
+  color: #FF7A00;
+  border: 2px solid #FF7A00;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 12px;
+}
+
+.permiso-btn:hover:not(:disabled) {
+  background: #FF7A00;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Estado: notificaciones activadas */
+.permiso-btn.activado {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-color: #2e7d32;
+  cursor: default;
+}
+
+.permiso-btn.activado:hover {
+  transform: none;
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* Estado: notificaciones bloqueadas */
+.permiso-btn.bloqueado {
+  background: #ffebee;
+  color: #c62828;
+  border-color: #c62828;
+  cursor: default;
+}
+
+.permiso-btn.bloqueado:hover {
+  transform: none;
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* Nota informativa */
+.info-nota {
+  text-align: center;
+  color: #666;
+  font-size: 13px;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+/* ========== MODO OSCURO ========== */
+.dark-mode .recordatorios-card {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+.dark-mode .recordatorios-card h3 {
+  color: #90caf9;
+  border-bottom-color: #FF7A00;
+}
+
+.dark-mode .form-group label {
+  color: #ccc;
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group select {
+  background: #2a2a2a;
+  color: white;
+  border-color: #444;
+}
+
+.dark-mode .recordatorio-item {
+  background: #2a2a2a;
+}
+
+.dark-mode .recordatorio-titulo {
+  color: white;
+}
+
+.dark-mode .recordatorio-detalle {
+  color: #bbb;
+}
+
+.dark-mode .vacio {
+  background: #2a2a2a;
+  color: #aaa;
+}
+
+.dark-mode .info-nota {
+  color: #aaa;
+}
+
+.dark-mode .permiso-btn {
+  background: #2a2a2a;
+  color: #FF7A00;
+  border-color: #FF7A00;
+}
+
+.dark-mode .permiso-btn:hover:not(:disabled) {
+  background: #FF7A00;
+  color: white;
+}
+
+.dark-mode .permiso-btn.activado {
+  background: #1b3a1e;
+  color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.dark-mode .permiso-btn.bloqueado {
+  background: #3a1e1e;
+  color: #ef5350;
+  border-color: #ef5350;
+}
+
+/* ========== AVISO DE NOTIFICACIONES (link a Configuración) ========== */
+
+.aviso-notif {
+  background: #FFF8F1;
+  border: 1px dashed #FF7A00;
+}
+
+.aviso-notif h3 {
+  color: #FF7A00;
+  border-bottom-color: #FF7A00;
+}
+
+.link-config {
+  color: #FF7A00;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid #FF7A00;
+}
+
+.link-config:hover {
+  color: #cc6200;
+  border-bottom-color: #cc6200;
+}
+
+.dark-mode .aviso-notif {
+  background: #2a1e0f;
+  border-color: #FF7A00;
+}
+
+.dark-mode .link-config {
+  color: #FFA94D;
+  border-bottom-color: #FFA94D;
+}

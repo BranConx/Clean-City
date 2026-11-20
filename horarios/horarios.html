@@ -1,0 +1,76 @@
+<!--
+ Proyecto: CLEAN CITY
+ Descripción: Horarios de recolección (dinámicos desde el panel admin)
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanCity - Horarios</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>
+    if (!localStorage.getItem("usuarioCleanCity")) {
+      window.location.href = "../login/login.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div>
+        <div class="logo">🧹 CleanCity</div>
+        <nav class="menu" id="menuPrincipal">
+          <a href="../inicio/inicio.html">🏠 Inicio</a>
+          <a href="../mapa/mapa.html">🗺️ Mapa</a>
+          <a href="../horarios/horarios.html" class="active">🚛 Horarios</a>
+          <a href="../reportes/reportes.html">📢 Reportes</a>
+          <a href="../reciclaje/reciclaje.html">♻️ Reciclaje</a>
+          <a href="../recordatorios/recordatorios.html">🔔 Recordatorios</a>
+          <a href="../configuracion/configuracion.html">⚙️ Configuración</a>
+        </nav>
+      </div>
+      <div class="profile-box" id="profileBox"></div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="welcome">
+          <h1>🚛 Horarios de recolección</h1>
+          <p>Consulta los días y horas de recolección en tu zona.</p>
+        </div>
+        <div class="top-actions">
+          <div class="fecha-box" id="fechaHora"></div>
+        </div>
+      </div>
+
+      <!-- Recolección de residuos con CALENDARIO -->
+      <div class="info-section">
+        <h2>🗓️ Recolección de residuos</h2>
+        <p>Los horarios pueden variar según el barrio y el tipo de residuo.</p>
+        <div id="calendarioRecoleccion"></div>
+      </div>
+
+      <!-- Zonas (dinámico) -->
+      <div class="info-section">
+        <h2>🗺️ Zonas de recolección</h2>
+        <div id="listaZonasPublica" class="horarios-lista-publica"></div>
+      </div>
+
+      <!-- Horarios (dinámico) -->
+      <div class="info-section">
+        <h2>📋 Horarios programados</h2>
+        <div id="listaHorariosPublica" class="horarios-lista-publica"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/calendario.js"></script>
+  <script src="../horarios/horarios.js"></script>
+  <script>
+    actualizarMenu();
+  </script>
+</body>
+</html>

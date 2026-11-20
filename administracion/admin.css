@@ -1,0 +1,217 @@
+/* ================================
+   ADMIN - PANEL DE ADMINISTRACIÓN
+   ================================ */
+
+/* Nota informativa bajo cada título */
+.admin-nota {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+/* Formulario de administración */
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+  padding: 18px;
+  background: #f9f9f9;
+  border-radius: 14px;
+  border: 1px dashed #ddd;
+}
+
+.admin-form input,
+.admin-form select {
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: white;
+  transition: 0.3s;
+}
+
+.admin-form input:focus,
+.admin-form select:focus {
+  outline: none;
+  border-color: #FF7A00;
+  box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.15);
+}
+
+/* Botón primario */
+.btn-primario {
+  background: #FF7A00;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.btn-primario:hover {
+  background: #e66900;
+  transform: translateY(-2px);
+}
+
+/* Listas */
+.admin-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 18px;
+  background: #f9f9f9;
+  border-left: 4px solid #FF7A00;
+  border-radius: 12px;
+  transition: 0.3s;
+  flex-wrap: wrap;
+}
+
+.admin-item:hover {
+  background: #FFF1E5;
+  transform: translateX(4px);
+}
+
+.admin-item-info {
+  flex: 1;
+  min-width: 200px;
+}
+
+.admin-item-titulo {
+  font-weight: 700;
+  color: #333;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.admin-item-detalle {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.admin-item-detalle strong {
+  color: #FF7A00;
+}
+
+.btn-eliminar-admin {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.btn-eliminar-admin:hover {
+  background: #b02a37;
+  transform: scale(1.05);
+}
+
+.admin-vacio {
+  text-align: center;
+  color: #999;
+  padding: 25px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* Resumen (stats) */
+.admin-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.admin-stat {
+  background: #FFF1E5;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+}
+
+.admin-stat h3 {
+  font-size: 32px;
+  color: #FF7A00;
+  margin-bottom: 4px;
+}
+
+.admin-stat p {
+  color: #666;
+  font-size: 13px;
+}
+
+/* Badge admin */
+.badge-admin {
+  display: inline-block;
+  background: #FF7A00;
+  color: white;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* ========== MODO OSCURO ========== */
+.dark-mode .admin-nota {
+  color: #aaa;
+}
+
+.dark-mode .admin-form {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+.dark-mode .admin-form input,
+.dark-mode .admin-form select {
+  background: #1e1e1e;
+  color: white;
+  border-color: #444;
+}
+
+.dark-mode .admin-item {
+  background: #2a2a2a;
+}
+
+.dark-mode .admin-item:hover {
+  background: #3a3a3a;
+}
+
+.dark-mode .admin-item-titulo {
+  color: white;
+}
+
+.dark-mode .admin-item-detalle {
+  color: #bbb;
+}
+
+.dark-mode .admin-vacio {
+  background: #2a2a2a;
+  color: #aaa;
+}
+
+.dark-mode .admin-stat {
+  background: #2a1e0f;
+}
+
+.dark-mode .admin-stat p {
+  color: #bbb;
+}

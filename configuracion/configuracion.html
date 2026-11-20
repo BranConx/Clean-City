@@ -1,0 +1,91 @@
+<!--
+ Proyecto: CLEAN CITY
+ Descripción: Estructura HTML de la interfaz del sistema.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanCity - Configuración</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../configuracion/configuracion.css">
+  <script>
+    if (!localStorage.getItem("usuarioCleanCity")) {
+      window.location.href = "../login/login.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">🧹 CleanCity</div>
+        <nav class="menu" id="menuPrincipal">
+          <a href="../inicio/inicio.html">🏠 Inicio</a>
+          <a href="../mapa/mapa.html">🗺️ Mapa</a>
+          <a href="../horarios/horarios.html">🚛 Horarios</a>
+          <a href="../reportes/reportes.html">📢 Reportes</a>
+          <a href="../reciclaje/reciclaje.html">♻️ Reciclaje</a>
+          <a href="../recordatorios/recordatorios.html">🔔 Recordatorios</a>
+          <a href="../configuracion/configuracion.html" class="active">⚙️ Configuración</a>
+        </nav>
+      </div>
+      <div class="profile-box" id="profileBox"></div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main">
+      <div class="topbar">
+        <div class="welcome">
+          <h1>⚙️ Configuración</h1>
+          <p>Personaliza tu experiencia en CleanCity</p>
+        </div>
+        <div class="top-actions">
+          <div class="fecha-box" id="fechaHora"></div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN APARIENCIA -->
+      <div class="info-section">
+        <h2>🎨 Apariencia</h2>
+        <div class="config-opciones">
+          <label>
+            <input type="checkbox" id="modoOscuroCheck"> 🌙 Modo oscuro
+          </label>
+        </div>
+        <p class="config-nota">💡 Los cambios se guardan automáticamente.</p>
+      </div>
+
+      <!-- SECCIÓN NOTIFICACIONES -->
+      <div class="info-section">
+        <h2>🔔 Notificaciones</h2>
+        <div class="config-opciones">
+          <label>
+            <input type="checkbox" id="notificacionesCheck"> 🔔 Activar notificaciones
+          </label>
+        </div>
+        <p class="config-nota">💡 Al activarlas, el navegador te pedirá permiso.</p>
+      </div>
+
+      <!-- SECCIÓN CUENTA -->
+      <div class="info-section">
+        <h2>🔐 Cuenta</h2>
+        <div class="config-opciones">
+          <button onclick="cerrarSesion()" class="btn-cerrar-sesion" style="width:100%; padding:12px; font-size:16px; background:#dc3545; color:white; border:none; border-radius:12px; cursor:pointer;">
+            🚪 Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/script.js"></script>
+  <script src="../configuracion/configuracion.js"></script>
+  <script>
+    actualizarMenu();
+  </script>
+</body>
+</html>
